@@ -852,6 +852,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     singularName: 'home-page';
     pluralName: 'home-pages';
     displayName: 'HomePage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -862,7 +863,8 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
         'components.header',
         'components.trust-list',
         'components.motivation-list',
-        'components.card'
+        'components.card',
+        'components.section'
       ]
     >;
     createdAt: Attribute.DateTime;

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_components_sections",
+  "info": {
+    "displayName": "Section",
+    "icon": "",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "displayName": "HeaderTitle",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.header-title"
+    },
+    "listCart": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.card"
+    }
+  }
+}

@@ -2,7 +2,8 @@
   "collectionName": "components_components_headers",
   "info": {
     "displayName": "Header",
-    "icon": "bold"
+    "icon": "bold",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,6 +12,11 @@
     },
     "description": {
       "type": "string"
+    },
+    "headerImage": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.card"
     }
   }
 }
