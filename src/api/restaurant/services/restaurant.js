@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * expert service
+ * restaurant service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::expert.expert');
+module.exports = createCoreService('api::restaurant.restaurant');

@@ -4,12 +4,22 @@
   "info": {
     "singularName": "about-us-page",
     "pluralName": "about-us-pages",
-    "displayName": "AboutUsPage",
-    "description": ""
+    "displayName": "AboutUsPage"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
-  "attributes": {}
+  "attributes": {
+    "AboutUsPageContent": {
+      "type": "dynamiczone",
+      "components": [
+        "components.section",
+        "components.header",
+        "components.header-title",
+        "components.card",
+        "components.title"
+      ]
+    }
+  }
 }

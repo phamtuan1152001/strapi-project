@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * expert controller
+ * food controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::expert.expert');
+module.exports = createCoreController('api::food.food');

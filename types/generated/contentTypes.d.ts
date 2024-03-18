@@ -794,12 +794,20 @@ export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
     singularName: 'about-us-page';
     pluralName: 'about-us-pages';
     displayName: 'AboutUsPage';
-    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    AboutUsPageContent: Attribute.DynamicZone<
+      [
+        'components.section',
+        'components.header',
+        'components.header-title',
+        'components.card',
+        'components.title'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -818,36 +826,60 @@ export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
   };
 }
 
-export interface ApiExpertExpert extends Schema.CollectionType {
-  collectionName: 'experts';
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
   info: {
-    singularName: 'expert';
-    pluralName: 'experts';
-    displayName: 'Expert';
-    description: '';
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category ';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Unique;
-    description: Attribute.String;
-    image: Attribute.Media;
-    slug: Attribute.String;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    restaurants: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::restaurant.restaurant'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::expert.expert',
+      'api::category.category',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::expert.expert',
+      'api::category.category',
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFoodFood extends Schema.CollectionType {
+  collectionName: 'foods';
+  info: {
+    singularName: 'food';
+    pluralName: 'foods';
+    displayName: 'Food';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::food.food', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::food.food', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -865,7 +897,13 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   };
   attributes: {
     HomePageContent: Attribute.DynamicZone<
-      ['components.card', 'components.section']
+      [
+        'components.header',
+        'components.trust-list',
+        'components.motivation-list',
+        'components.card',
+        'components.section'
+      ]
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -878,6 +916,42 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRestaurantRestaurant extends Schema.CollectionType {
+  collectionName: 'restaurants';
+  info: {
+    singularName: 'restaurant';
+    pluralName: 'restaurants';
+    displayName: 'Restaurant';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.Blocks;
+    categories: Attribute.Relation<
+      'api::restaurant.restaurant',
+      'manyToMany',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::restaurant.restaurant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::restaurant.restaurant',
       'oneToOne',
       'admin::user'
     > &
@@ -904,8 +978,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
-      'api::expert.expert': ApiExpertExpert;
+      'api::category.category': ApiCategoryCategory;
+      'api::food.food': ApiFoodFood;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::restaurant.restaurant': ApiRestaurantRestaurant;
     }
   }
 }
