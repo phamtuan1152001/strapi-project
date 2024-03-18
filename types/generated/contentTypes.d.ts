@@ -788,6 +788,44 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
+  collectionName: 'about_us_pages';
+  info: {
+    singularName: 'about-us-page';
+    pluralName: 'about-us-pages';
+    displayName: 'AboutUsPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AboutUsPageContent: Attribute.DynamicZone<
+      [
+        'components.section',
+        'components.header',
+        'components.header-title',
+        'components.card',
+        'components.title'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about-us-page.about-us-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about-us-page.about-us-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -939,6 +977,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
       'api::category.category': ApiCategoryCategory;
       'api::food.food': ApiFoodFood;
       'api::home-page.home-page': ApiHomePageHomePage;

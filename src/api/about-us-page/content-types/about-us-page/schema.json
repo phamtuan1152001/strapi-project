@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_us_pages",
+  "info": {
+    "singularName": "about-us-page",
+    "pluralName": "about-us-pages",
+    "displayName": "AboutUsPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "AboutUsPageContent": {
+      "type": "dynamiczone",
+      "components": [
+        "components.section",
+        "components.header",
+        "components.header-title",
+        "components.card",
+        "components.title"
+      ]
+    }
+  }
+}
