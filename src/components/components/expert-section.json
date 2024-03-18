@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_components_expert_sections",
+  "info": {
+    "displayName": "expertSection"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "expert_lists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::expert.expert"
+    }
+  }
+}

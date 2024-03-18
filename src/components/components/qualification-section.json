@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_components_qualification_sections",
+  "info": {
+    "displayName": "qualificationSection"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "qualifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::qualification.qualification"
+    }
+  }
+}

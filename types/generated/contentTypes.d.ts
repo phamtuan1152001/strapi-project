@@ -808,16 +808,8 @@ export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
         'components.title'
       ]
     >;
-    expert_lists: Attribute.Relation<
-      'api::about-us-page.about-us-page',
-      'oneToMany',
-      'api::expert.expert'
-    >;
-    qualifications: Attribute.Relation<
-      'api::about-us-page.about-us-page',
-      'oneToMany',
-      'api::qualification.qualification'
-    >;
+    qualification: Attribute.Component<'components.qualification-section'>;
+    expert: Attribute.Component<'components.expert-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

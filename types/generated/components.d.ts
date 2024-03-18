@@ -16,6 +16,21 @@ export interface ComponentsCard extends Schema.Component {
   };
 }
 
+export interface ComponentsExpertSection extends Schema.Component {
+  collectionName: 'components_components_expert_sections';
+  info: {
+    displayName: 'expertSection';
+  };
+  attributes: {
+    title: Attribute.String;
+    expert_lists: Attribute.Relation<
+      'components.expert-section',
+      'oneToMany',
+      'api::expert.expert'
+    >;
+  };
+}
+
 export interface ComponentsHeaderTitle extends Schema.Component {
   collectionName: 'components_components_header_titles';
   info: {
@@ -24,6 +39,21 @@ export interface ComponentsHeaderTitle extends Schema.Component {
   attributes: {
     title: Attribute.String;
     description: Attribute.String;
+  };
+}
+
+export interface ComponentsQualificationSection extends Schema.Component {
+  collectionName: 'components_components_qualification_sections';
+  info: {
+    displayName: 'qualificationSection';
+  };
+  attributes: {
+    title: Attribute.String;
+    qualifications: Attribute.Relation<
+      'components.qualification-section',
+      'oneToMany',
+      'api::qualification.qualification'
+    >;
   };
 }
 
@@ -55,7 +85,9 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'components.card': ComponentsCard;
+      'components.expert-section': ComponentsExpertSection;
       'components.header-title': ComponentsHeaderTitle;
+      'components.qualification-section': ComponentsQualificationSection;
       'components.section': ComponentsSection;
       'components.title': ComponentsTitle;
     }

@@ -21,15 +21,17 @@
         "components.title"
       ]
     },
-    "expert_lists": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::expert.expert"
+    "qualification": {
+      "displayName": "qualificationSection",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.qualification-section"
     },
-    "qualifications": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::qualification.qualification"
+    "expert": {
+      "displayName": "expertSection",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.expert-section"
     }
   }
 }
