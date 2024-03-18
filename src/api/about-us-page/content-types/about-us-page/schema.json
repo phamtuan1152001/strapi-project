@@ -25,6 +25,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::expert.expert"
+    },
+    "qualifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::qualification.qualification"
     }
   }
 }

@@ -813,6 +813,11 @@ export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
       'oneToMany',
       'api::expert.expert'
     >;
+    qualifications: Attribute.Relation<
+      'api::about-us-page.about-us-page',
+      'oneToMany',
+      'api::qualification.qualification'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -897,6 +902,37 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   };
 }
 
+export interface ApiQualificationQualification extends Schema.CollectionType {
+  collectionName: 'qualifications';
+  info: {
+    singularName: 'qualification';
+    pluralName: 'qualifications';
+    displayName: 'Qualification';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Unique;
+    image: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::qualification.qualification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::qualification.qualification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -918,6 +954,7 @@ declare module '@strapi/types' {
       'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
       'api::expert.expert': ApiExpertExpert;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::qualification.qualification': ApiQualificationQualification;
     }
   }
 }
