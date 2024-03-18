@@ -4,7 +4,8 @@
   "info": {
     "singularName": "about-us-page",
     "pluralName": "about-us-pages",
-    "displayName": "AboutUsPage"
+    "displayName": "AboutUsPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,11 @@
         "components.card",
         "components.title"
       ]
+    },
+    "expert_lists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::expert.expert"
     }
   }
 }

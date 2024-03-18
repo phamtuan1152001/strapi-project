@@ -794,6 +794,7 @@ export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
     singularName: 'about-us-page';
     pluralName: 'about-us-pages';
     displayName: 'AboutUsPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -806,6 +807,11 @@ export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
         'components.card',
         'components.title'
       ]
+    >;
+    expert_lists: Attribute.Relation<
+      'api::about-us-page.about-us-page',
+      'oneToMany',
+      'api::expert.expert'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
