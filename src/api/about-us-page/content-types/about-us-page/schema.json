@@ -15,7 +15,6 @@
       "type": "dynamiczone",
       "components": [
         "components.section",
-        "components.header",
         "components.header-title",
         "components.card",
         "components.title"

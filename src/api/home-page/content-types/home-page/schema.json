@@ -15,9 +15,6 @@
     "HomePageContent": {
       "type": "dynamiczone",
       "components": [
-        "components.header",
-        "components.trust-list",
-        "components.motivation-list",
         "components.card",
         "components.section"
       ]
